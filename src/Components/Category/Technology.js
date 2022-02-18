@@ -6,7 +6,7 @@ import TopArticle from '../TopArticle'
 function Technology() {
   const [data,setData] = useState([])
   useEffect(()=>{
-      axios.get("http://localhost:7000/api/v1/blogdata/details")
+    axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
       .then((value)=> setData(value.data))
   },[])
 
