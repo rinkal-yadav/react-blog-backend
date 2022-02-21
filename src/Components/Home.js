@@ -5,11 +5,13 @@ import ArticlesCategory1 from './ArticlesCategory1'
 import ArticlesCategory2 from './ArticlesCategory2'
 import ArticlesCategory3 from './ArticlesCategory3'
 import TopArticle from './TopArticle'
-function Home() {
-    
+function Home() {    
+       
+          
     return (
         <div>
-            <FeaturedArticle/>
+            
+            <FeaturedArticle />
             
             <div className='LatestText'><div className='textBorder'>The </div> Latest</div>
           

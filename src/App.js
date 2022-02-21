@@ -9,7 +9,10 @@ import Technology from './Components/Category/Technology';
 import Tourism from './Components/Category/Tourism';
 import World from './Components/Category/World';
 import Reading from './Components/ReadingPage'
+
 function App() {
+  
+  
   return (
     <div >
       <Router>
@@ -30,6 +33,7 @@ function App() {
             
           </Routes>
     </Router>
+ 
     </div>
   );
 }

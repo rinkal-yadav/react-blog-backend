@@ -6,7 +6,7 @@ import TopArticle from '../TopArticle'
 function Business() {
   const [data,setData] = useState([])
   useEffect(()=>{
-      axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
+      axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details/business")
       .then((value)=> setData(value.data))
   },[])
 

@@ -7,7 +7,7 @@ function Covid() {
   
   const [data,setData] = useState([])
   useEffect(()=>{
-    axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
+    axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details/covid")
       .then((value)=> setData(value.data))
   },[])
 

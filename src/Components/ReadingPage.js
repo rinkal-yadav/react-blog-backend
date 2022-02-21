@@ -12,18 +12,29 @@ function Reading() {
     let result=[]
     const MoreResult=[]
     const [data,setData] = useState([])
+    const [data1,setData1] = useState([])
+
     useEffect(()=>{
-        axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
+        axios.get(`https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details/?Id=${id}`)
         .then((value)=> setData(value.data))
+        
+    },[id])
+
+    useEffect(()=>{
+        
+        axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
+        .then((value)=> setData1(value.data))
     },[])
-    data.forEach((a)=>{
+
+    
+    data1.forEach((a)=>{
         if (a.Id===id) {
         result.push(a.Category)
                
             
     }})
     const category=result[0]
-    data.forEach((a)=>{
+    data1.forEach((a)=>{
         if ((a.Category===category)&&(a.Id!==id)) {
             MoreResult.push(
             {  id:a.Id,
