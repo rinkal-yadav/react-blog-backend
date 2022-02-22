@@ -5,10 +5,10 @@ import TopArticle from '../TopArticle'
 
 function Covid() {
   
-  const [data,setData] = useState([])
+  const [content,setContent] = useState([])
   useEffect(()=>{
     axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details/covid")
-      .then((value)=> setData(value.data))
+      .then((value)=> setContent(value.data))
   },[])
 
 
@@ -20,16 +20,16 @@ function Covid() {
     <div className='FlexContainer space-btwn'>
       <div>
 
-        {data.filter((cat)=>cat.Category==="covid").map((row) =>
+        {content.map((row) =>
           <div key={row.id} className='FlexContainer' >
-            <div style={{ cursor: "pointer" }}> <Link to={`/Reading/${row.Id}`}> <img className='cardImgBox' src={row.Img} alt="" /></Link> </div>
+            <div style={{ cursor: "pointer" }}> <Link to={`/Reading/${row.id}`}> <img className='cardImgBox' src={row.img} alt="" /></Link> </div>
             <div>
-              <div className='cardTitle'>{row.Name}</div>
+              <div className='cardTitle'>{row.name}</div>
               <div className='CardDesc cardContain'>
-                <div>{row.About.slice(0,160)} ...... </div>
+                <div>{row.about.slice(0,160)} ...... </div>
 
               </div>
-              <p className='cardDate'>{row.Category}<span className='CardDesc'>{row.Date}</span></p>
+              <p className='cardDate'>{row.category}<span className='CardDesc'>{row.date}</span></p>
             </div>
 
           </div>

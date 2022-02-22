@@ -1,57 +1,19 @@
 import React, { useState,useEffect } from 'react'
-import axios from 'axios'
 import {Link} from 'react-router-dom'
-function ArticlesCategory3() {
-    const tech3 = []
-    const techAll = []
-    const [result, setResult] = []
+function ArticlesCategory3(props) {
     const [visible, SetVisible] = useState(false)
     const [data,setData] = useState([])
+
     useEffect(()=>{
-        axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
-        .then((value)=> setData(value.data))
-    },[])
-    data.forEach((a) => {
-        if (a.Category === "technology") {
-            techAll.push({
-                name: a.Name,
-                img: a.Img,
-                id:a.Id,
-                date:a.Date,
-                about:a.About,
-                category:a.Category
-            })
-        }
+        setData(props.dataObject[0])
 
-    })
-    techAll.forEach((a, index) => {
-        if (index < 3) {
-            tech3.push({
-                name: a.name,
-                img: a.img,
-                id:a.id,
-                date:a.date,
-                about:a.about,
-                category:a.category
-            })
-        }
-
-    })
-
-
-    const loadMore = () => {
-        SetVisible(true)
-        setResult(techAll)
-    }
-    const loadLess = () => {
-        SetVisible(false)
-        setResult(tech3)
-    }
-    console.log("ssss", result);
+    },[props.dataObject])
+    
+     
     return (
         
              <div className='FlexContainer'>
-                {visible ? <>{techAll.map((latest) => 
+                {visible ? <>{data.map((latest) => 
                             <div key={latest.id}>
                                 <div style={{cursor:"pointer"}} > <Link to={`/Reading/${latest.id}`}><img className='cardImgBox' src={latest.img}alt=""/> </Link></div>
                                 <div>
@@ -61,8 +23,8 @@ function ArticlesCategory3() {
                                </div>
                            </div>
                         ) }
-                      <button className='loadMore' onClick={loadLess} > View Less &#8592;</button> </>
-                    :<>{tech3.map((latest) => 
+                      <button className='loadMore' onClick={()=>{ SetVisible(false)}} > View Less &#8592;</button> </>
+                    :<>{data.filter((value,index)=>index<3).map((latest) => 
                         <div key={latest.id}>
                              <div style={{cursor:"pointer"}} > <Link to={`/Reading/${latest.id}`}><img className='cardImgBox' src={latest.img}alt=""/> </Link></div>
 
@@ -73,7 +35,7 @@ function ArticlesCategory3() {
                            </div>
                        </div>
                     ) }
-                    <button className='loadMore' onClick={loadMore} > View More &#8594;</button></>
+                    <button className='loadMore' onClick={()=>{ SetVisible(true)}}> View More &#8594;</button></>
                 
                 }
         </div>

@@ -1,25 +1,26 @@
 import {Link} from 'react-router-dom'
 import React, { useState,useEffect } from 'react'
-import axios from 'axios'
-function AllArticles() {
+
+function AllArticles(props) {
     const [data,setData] = useState([])
     useEffect(()=>{
-        axios.get("https://rinkal-backend-app.herokuapp.com/api/v1/blogdata/details")
-        .then((value)=> setData(value.data))
-    },[])
+        setData(props.dataObject[0])
+
+    },[props.dataObject])
+    
     
     return (
         <div >
             <div className='FlexContainer'>
             {
-            data.filter((value,index)=>index>=data.length-3).map((latest)=>
-            <div  key={latest.Id}>
-                      <div style={{cursor:"pointer"}} > <Link to={`/Reading/${latest.Id}`}><img className='cardImgBox' src={latest.Img}alt=""/> </Link></div>
+            data.map((latest)=>
+            <div  key={latest.id}>
+                      <div style={{cursor:"pointer"}} > <Link to={`/Reading/${latest.id}`}><img className='cardImgBox' src={latest.img}alt=""/> </Link></div>
 
                     <div >
-                    <div className='cardTitle'>{latest.Name}</div>
-                                    <span className='CardDesc '>About: {latest.About.slice(0,30)} ...</span>
-                                     <p className='cardDate'>{latest.Category}<span className='CardDesc'>{latest.Date}</span></p>
+                    <div className='cardTitle'>{latest.name}</div>
+                                    <span className='CardDesc '>About: {latest.about.slice(0,30)} ...</span>
+                                     <p className='cardDate'>{latest.category}<span className='CardDesc'>{latest.date}</span></p>
                     </div>
             </div>
             ) }
