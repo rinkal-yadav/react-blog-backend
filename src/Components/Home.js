@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import FeaturedArticle from './FeaturedArticle'
 import AllArticles from './AllArticles'
 import ArticlesCategory1 from './ArticlesCategory1'
@@ -109,36 +109,45 @@ function Home() {
 
     return (
         <div>
+            {
+                data[1] ? <div>
+                    <FeaturedArticle dataObject={[featuredArt]} />
 
-            <FeaturedArticle dataObject={[featuredArt]}/>
+                    <div className='LatestText'><div className='textBorder'>The </div> Latest</div>
 
-            <div className='LatestText'><div className='textBorder'>The </div> Latest</div>
+                    <AllArticles dataObject={[artAll]} />
+                    <div className='LatestText'><div className='articleText'>Latest </div>  Articles</div>
+                    <div className='FlexContainer'>
+                        <div className='ArticleFlexColumn'>
+                            <ArticlesCategory1 dataObject={[art1]} />
+                            <div >
+                                <img className='articleVerticalImg' alt='gallary' src="https://www.planetware.com/wpimages/2021/05/united-arab-emirates-top-attractions-family-fun-them-parks-wild-wadi-park.jpg" />
+                            </div>
+                        </div>
 
-            <AllArticles  dataObject={[artAll]}/>
-            <div className='LatestText'><div className='articleText'>Latest </div>  Articles</div>
-            <div className='FlexContainer'>
-                <div className='ArticleFlexColumn'>
-                    <ArticlesCategory1  dataObject={[art1]}/>
-                    <div >
-                        <img className='articleVerticalImg' alt='gallary' src="https://www.planetware.com/wpimages/2021/05/united-arab-emirates-top-attractions-family-fun-them-parks-wild-wadi-park.jpg" />
+                        <div className='marginLeft'>
+                            <div className='Advertistement'>Advertistement</div>
+                            <div className='LatestText'><div className='textBorder'>The </div> Top</div>
+                            <TopArticle dataObject={[topArt]} />
+                        </div>
+                        <div className='LatestText'><div className='articleText'>Latest </div>  Technology Article</div>
+
+                        <ArticlesCategory3 dataObject={[art3]} />
+                        <div className='LatestText'><div className='articleText'>Latest </div>  Tourism Article</div>
+
+                        <ArticlesCategory2 dataObject={[art2]} />
+
                     </div>
+
                 </div>
+                    :
+                    <img className='loading' alt="Loading" src='https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif' />
+            }
 
-                <div className='marginLeft'>
-                    <div className='Advertistement'>Advertistement</div>
-                    <div className='LatestText'><div className='textBorder'>The </div> Top</div>
-                    <TopArticle  dataObject={[topArt]}/>
-                </div>
-                <div className='LatestText'><div className='articleText'>Latest </div>  Technology Article</div>
 
-                <ArticlesCategory3 dataObject={[art3]} />
-                <div className='LatestText'><div className='articleText'>Latest </div>  Tourism Article</div>
-
-                <ArticlesCategory2 dataObject={[art2]}/>
-
-            </div>
 
         </div>
+
     )
 }
 

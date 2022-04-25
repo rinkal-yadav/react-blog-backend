@@ -2,7 +2,13 @@ body{
   margin: 6px;
   padding: 6px;
 }
-.FlexContainer{
+.loading{
+  margin-left: 500px;
+  margin-top: 150px;
+  width: 600px;
+  height: 120px;
+  }
+  .FlexContainer{
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
